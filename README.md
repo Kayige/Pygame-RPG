@@ -1,5 +1,9 @@
 # Pygame-RPG
-My attempt at building a Final Fantasy Clone
+My attempt at building a Final Fantasy Clone.
+
+Download the entire package and run **game.py**.
+Runs best when file is open first on IDLE (Python 3.8 32-bit).
+
 
 ## Basic Controls
 
