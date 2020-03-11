@@ -26,7 +26,13 @@ Runs best when file is open first on IDLE (Python 3.8 32-bit).
 | Boss Image     |    Completed   |    [x]   |
 | Menu Interface |   in progress  |    [ ]   |
 | More Items     |   in progress  |    [ ]   |
+| More Skills    |   in progress  |    [ ]   |
 
 
 ### Bugs
 1. Random Drop Equipment will cause crash because of unfinished code.
+2. Item Chest doesn't clear after battle sequence.
+3. Tier 3 Spells not showing.
+
+#### Fixes
+1. Castle Loot was out of map.
