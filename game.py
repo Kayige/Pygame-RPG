@@ -645,9 +645,9 @@ def main():
 
        "                 W                                                                         W                 ",
 
-       "                 W                                                                         W                 ",
+       "                 W                                                     L                   W                 ",
 
-       "                 W                                  L                                      W                 ",
+       "                 W                                                                         W                 ",
 
        "                 W                                                                         W                 ",
 
