@@ -36,3 +36,6 @@ Runs best when file is open first on IDLE (Python 3.8 32-bit).
 
 #### Fixes
 1. Castle Loot was out of map.
+2. Pathing Issues.
+3. Exit game Fixed.
+4. Game.py loading fixed.
