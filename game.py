@@ -35,7 +35,7 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
 current_path = os.path.dirname(__file__) # Where your .py file is located
-image_path = os.path.join(current_path, 'src') # The resource folder path
+image_path = os.path.join(current_path, 'images') # The resource folder path
 
 class Game:
    def __init__(self, frames):
