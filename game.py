@@ -30,7 +30,12 @@ from NoneEnemy import *
 # Forces static position of screen
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
+
+# Initialize pygame wrapper
 pygame.init()
+
+current_path = os.path.dirname(__file__) # Where your .py file is located
+image_path = os.path.join(current_path, 'src') # The resource folder path
 
 class Game:
    def __init__(self, frames):
@@ -42,7 +47,7 @@ class Game:
        image = pygame.image.load(Constants.BG)
        self.screen.blit(image, [0, 0])
        self.title = Text(Constants.win_h / 12, "--Click Here--",
-                            "center", Constants.win_w / 2, Constants.win_h * 0.8, Constants.BLACK)
+                         "center", Constants.win_w / 2, Constants.win_h * 0.8, Constants.BLACK)
        self.end_title_win = Text(
            Constants.win_h / 6, "You Win!", "center", Constants.win_w / 2, Constants.win_h / 2 - 192, Constants.WHITE)
        self.end_title_lose = Text(
@@ -635,7 +640,7 @@ def main():
 
        "                                                                                                             ",
 
-       "                                                                                                            ",
+       "                                                                                                             ",
 
        "                                                                                                             ",
 
@@ -645,9 +650,9 @@ def main():
 
        "                 W                                                                         W                 ",
 
-       "                 W                                                     L                   W                 ",
-
        "                 W                                                                         W                 ",
+
+       "                 W                                      L                                  W                 ",
 
        "                 W                                                                         W                 ",
 
@@ -1256,7 +1261,7 @@ def main():
                if event.type == pygame.MOUSEBUTTONDOWN or pygame.key.get_pressed()[pygame.K_RETURN] or pygame.key.get_pressed()[pygame.K_SPACE] != 0:
                    run.beginning = False
            # Render Title
-           run.text_blit([[run.title, 1]])
+           run.text_blit([[run.title,1]])
 
            # Writes to main surface
            pygame.display.flip()
@@ -1340,4 +1345,4 @@ def main():
        break
 
 if __name__ == "__main__":
- main()
+    main()
