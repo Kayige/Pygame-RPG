@@ -24,6 +24,7 @@ Runs best when file is open first on IDLE (Python 3.8 32-bit).
 | Character Image|    Completed   |    [x]   |
 | Enemy Image    |    Completed   |    [x]   |
 | Boss Image     |    Completed   |    [x]   |
+| Start Button   |    Completed   |    [x]   |
 | Menu Interface |   in progress  |    [ ]   |
 | More Items     |   in progress  |    [ ]   |
 | More Skills    |   in progress  |    [ ]   |
@@ -39,3 +40,4 @@ Runs best when file is open first on IDLE (Python 3.8 32-bit).
 2. Pathing Issues.
 3. Exit game Fixed.
 4. Game.py loading fixed.
+5. Fixed Start Button method.
