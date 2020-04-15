@@ -27,6 +27,7 @@ from GargoyleEnemy import *
 from BossEnemy import *
 from NoneEnemy import *
 
+
 # Forces static position of screen
 os.environ['SDL_VIDEO_CENTERED'] = '1'
 
@@ -35,7 +36,7 @@ os.environ['SDL_VIDEO_CENTERED'] = '1'
 pygame.init()
 
 current_path = os.path.dirname(__file__) # Where your .py file is located
-image_path = os.path.join(current_path, 'images') # The resource folder path
+image_path = os.path.join(current_path, 'src') # The resource folder path
 
 class Game:
    def __init__(self, frames):
@@ -46,8 +47,8 @@ class Game:
        self.clock.tick(self.fps)
        image = pygame.image.load(Constants.BG)
        self.screen.blit(image, [0, 0])
-       self.title = Text(Constants.win_h / 12, "--Click Here--",
-                         "center", Constants.win_w / 2, Constants.win_h * 0.8, Constants.BLACK)
+    #    self.title = Text(Constants.win_h / 12, "--Click Here--",
+    #                      "center", Constants.win_w / 2, Constants.win_h * 0.8, Constants.BLACK)
        self.end_title_win = Text(
            Constants.win_h / 6, "You Win!", "center", Constants.win_w / 2, Constants.win_h / 2 - 192, Constants.WHITE)
        self.end_title_lose = Text(
@@ -612,6 +613,43 @@ class Game:
 
                    # Writes to main surface
                    pygame.display.flip()
+
+def text_objects(text, font):
+    textSurface = font.render(text, True, (255,255,255))
+    return textSurface, textSurface.get_rect()
+
+"""
+msg: What do you want the button to say on it.
+x: The x location of the top left coordinate of the button box.
+y: The y location of the top left coordinate of the button box.
+w: Button width.
+h: Button height.
+ic: Inactive color (when a mouse is not hovering).
+ac: Active color (when a mouse is hovering).
+"""
+def button(msg,x,y,w,h,ic,ac, screen):
+    mouse = pygame.mouse.get_pos()
+    # to change the color when hover 
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+        pygame.draw.rect(screen, ac,(x,y,w,h))
+    else:
+        pygame.draw.rect(screen, ic,(x,y,w,h))
+
+    smallText = pygame.font.Font("freesansbold.ttf",20)
+    textSurf, textRect = text_objects(msg, smallText)
+    textRect.center = ( round((x+(w/2))), round((y+(h/2))) )
+    screen.blit(textSurf, textRect)
+    
+def creditmsg(msg):
+   #function to call tkiner to do popup window for credits page
+   msg_font= ("Verdana", 10)
+   credit = tk.Tk()
+   credit.wm_title("Credits")
+   label = ttk.Label(credit, text=msg, font=msg_font)
+   label.pack(side="top", fill="x", pady=10)
+   B1 = ttk.Button(credit, text="Back", command = credit.destroy)
+   B1.pack()
+   credit.mainloop()
 
 def main():
    pygame.display.set_caption("Turn Based RPG")
@@ -1245,7 +1283,7 @@ def main():
 
    while True:
        run.beginning = run.running = run.ending = True
-
+       
        # Runs Intro
        while run.beginning:
            # Read inputs
@@ -1257,11 +1295,19 @@ def main():
                elif event.type == pygame.KEYDOWN:
                    if event.key == pygame.K_ESCAPE:
                        sys.exit()
-               # Exit loop
-               if event.type == pygame.MOUSEBUTTONDOWN or pygame.key.get_pressed()[pygame.K_RETURN] or pygame.key.get_pressed()[pygame.K_SPACE] != 0:
-                   run.beginning = False
+                   # Exit loop
+            #    if event.type == pygame.MOUSEBUTTONDOWN or pygame.key.get_pressed()[pygame.K_RETURN] or pygame.key.get_pressed()[pygame.K_SPACE] != 0:
+            #        run.beginning = False
            # Render Title
-           run.text_blit([[run.title,1]])
+           #run.text_blit([[run.title,1]])
+
+           mouse = pygame.mouse.get_pos()
+           click = pygame.mouse.get_pressed()
+
+           start_button = button("Start", 160, 560, 200, 50, (0, 0, 0), (66, 66, 66), run.screen)
+           if 160 + 200 > mouse[0] > 160 and 560 + 50 > mouse[1] > 560:
+               if click[0] == 1:
+                   run.beginning = False                 
 
            # Writes to main surface
            pygame.display.flip()
